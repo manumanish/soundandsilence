@@ -1,60 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import './App.css';
 
-const InputForm = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', { name, email, message });
-    // Reset form fields
-    setName('');
-    setEmail('');
-    setMessage('');
-  };
+const App = () => {
+  useEffect(() => {
+    const video = document.getElementById('video');
+    video.play().catch((error) => {
+      // Handle the error here
+      console.log('Video playback error: ', error);
+    });
+  }, []);
 
   return (
-    <div className="form-container">
-      <h2>Input Form</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="message">Message:</label>
-          <textarea
-            id="message"
-            name="message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required
-          ></textarea>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <><h1> Hello </h1>
+    <div className="background-video" id="video-container">
+      <video autoPlay loop muted id="video">
+        <source src="./soundandsilence/public/video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      {/* Add your other page content here */}
+    </div></>
   );
 };
 
-export default InputForm;
+export default App;
