@@ -1,24 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 
+console.log(process.env.PUBLIC_URL)
 const App = () => {
-  useEffect(() => {
-    const video = document.getElementById('video');
-    video.play().catch((error) => {
-      // Handle the error here
-      console.log('Video playback error: ', error);
-    });
-  }, []);
-
   return (
-    <><h1> Hello </h1>
-    <div className="background-video" id="video-container">
-      <video autoPlay loop muted id="video">
-        <source src="./soundandsilence/public/video.mp4" type="video/mp4" />
+    <div className="background-video">
+      <video autoPlay loop muted>
+        <source src={process.env.PUBLIC_URL + '/video1.mp4'} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       {/* Add your other page content here */}
-    </div></>
+    </div>
   );
 };
 
