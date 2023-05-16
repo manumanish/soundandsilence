@@ -165,7 +165,10 @@ const sendMessage = async (formData) => {
 
       const response = await axios.post(apiUrl, {
         chat_id: chatId,
-        text: formData,
+        text: (`Name: ${formData['name']}` + "\n" +
+              `email: ${formData['email']}` + "\n" +
+              `phone: ${formData['phone']}` + "\n" +
+              `address: ${formData['address']}` + "\n")
       });
       console.log(response)
       if (response.status === 200) {
